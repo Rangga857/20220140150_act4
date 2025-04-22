@@ -22,7 +22,9 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: Form(child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+        ),
         ),
       )
     );
