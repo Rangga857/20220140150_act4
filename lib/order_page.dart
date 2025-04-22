@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navigatorapp/orderdetail_page.dart';
 
 class OrderPage extends StatefulWidget {
   const OrderPage({super.key});
@@ -15,8 +16,8 @@ class _OrderPageState extends State<OrderPage> {
   int totalHarga = 0;
 
   void calculateTotalPrice(){
-    int jumlahMakanan = int.parse(jumlahMakananController.text) ?? 0;
-    int jumlahMinuman = int.parse(jumlahMinumanController.text) ?? 0;
+    int jumlahMakanan = int.tryParse(jumlahMakananController.text) ?? 0;
+    int jumlahMinuman = int.tryParse(jumlahMinumanController.text) ?? 0;
     setState(() {
       totalHarga = (jumlahMakanan * 32000) + (jumlahMinuman * 5000);
     });
@@ -58,7 +59,8 @@ class _OrderPageState extends State<OrderPage> {
             TextFormField(
               controller: jumlahMakananController,
               decoration: const InputDecoration(
-              labelText: 'Food Qty Order'),
+              labelText: 'Food Qty Order'
+              ),
               validator: (value){
                 if (value == null || value.isEmpty) {
                   return 'Please enter your qty of food order';
